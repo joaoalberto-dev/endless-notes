@@ -4,6 +4,8 @@ import { useCurrentEditor } from "@tiptap/react";
 import { useMemo } from "react";
 import { RedoIcon, UndoIcon } from "lucide-react";
 
+const buttonClasses = cn("text-xs rounded-full");
+
 function EditorMenu() {
   const { editor } = useCurrentEditor();
   const commands = useMemo(() => {
@@ -48,12 +50,14 @@ function EditorMenu() {
   return (
     <div className="flex gap-2 p-2 py-2">
       <Button
+        className={buttonClasses}
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().undo()}
       >
         <UndoIcon className="w-4 h-4" />
       </Button>
       <Button
+        className={buttonClasses}
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().redo()}
       >
@@ -64,7 +68,7 @@ function EditorMenu() {
           key={command.name}
           onClick={command.command}
           active={editor.isActive(command.name)}
-          className={cn("text-xs rounded-full")}
+          className={buttonClasses}
         >
           {command.label}
         </Button>
