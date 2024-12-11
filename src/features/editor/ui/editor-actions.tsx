@@ -4,10 +4,12 @@ import { saveNote } from "../data/save-note";
 import { useCurrentEditor } from "@tiptap/react";
 import { useTransition } from "react";
 import { toast } from "sonner";
+import { useNotes } from "@/features/notes/hooks/use-notes";
 
 function EditorActions() {
   const { editor } = useCurrentEditor();
   const [isPending, startTransition] = useTransition();
+  const { refetchNotes } = useNotes();
   const disabled =
     editor?.state.doc.textContent.trim() === "" || isPending;
 
@@ -18,6 +20,7 @@ function EditorActions() {
       try {
         await saveNote(editor.getHTML());
         editor.commands.clearContent();
+        refetchNotes();
       } catch {
         toast.warning("Failed to save note");
       }
