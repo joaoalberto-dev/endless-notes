@@ -28,21 +28,18 @@ const extensions = [
 ];
 
 function Editor() {
-
   return (
-    <div className="flex flex-col gap-2 w-full max-w-[480px]">
-      <div className="w-full border relative border-gray-300 overflow-hidden rounded-[24px] max-w-[480px]">
-        <EditorProvider
-          editorContainerProps={{
-            className:
-              "*:focus:outline-none relative bg-gray-50 overflow-y-auto p-4 no-scrollbar min-h-[200px] max-h-[300px]",
-          }}
-          slotBefore={<EditorMenu />}
-          slotAfter={<EditorActions />}
-          extensions={extensions}
-          content=""
-        />
-      </div>
+    <div className="w-full border-b sm:border relative border-gray-300 h-screen sm:h-auto overflow-hidden sm:rounded-[24px] sm:max-w-[480px]">
+      <EditorProvider
+        editorContainerProps={{
+          className:
+            "*:focus:outline-none relative h-[calc(100vh-42px)] sm:h-auto bg-gray-50 overflow-y-auto p-4 no-scrollbar sm:min-h-[200px] sm:max-h-[300px]",
+        }}
+        slotBefore={<EditorMenu />}
+        slotAfter={<EditorActions />}
+        extensions={extensions}
+        content=""
+      />
     </div>
   );
 }
