@@ -1,17 +1,17 @@
 import { Button } from "@/core/components/button/button";
-import { CheckIcon, Loader2 } from "lucide-react";
-import { saveNote } from "../data/save-note";
+import { useNotes } from "@/features/notes/hooks/use-notes";
+import { useSaveNotes } from "@/features/notes/hooks/use-save-notes";
 import { useCurrentEditor } from "@tiptap/react";
+import { CheckIcon, Loader2 } from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
-import { useNotes } from "@/features/notes/hooks/use-notes";
 
 function EditorActions() {
   const { editor } = useCurrentEditor();
   const [isPending, startTransition] = useTransition();
   const { refetchNotes } = useNotes();
-  const disabled =
-    editor?.state.doc.textContent.trim() === "" || isPending;
+  const disabled = editor?.state.doc.textContent.trim() === "" || isPending;
+  const { mutate: saveNote } = useSaveNotes();
 
   async function handleSave() {
     if (!editor || disabled) return;

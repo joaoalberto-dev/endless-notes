@@ -1,9 +1,9 @@
+import { auth } from "@/core/services/firebase/firebase";
 import {
+  signOut as firebaseSignOut,
   GoogleAuthProvider,
   signInWithPopup,
-  signOut as firebaseSignOut,
 } from "firebase/auth";
-import { auth } from "@/core/services/firebase";
 
 const provider = new GoogleAuthProvider();
 

@@ -1,5 +1,5 @@
+import { auth } from "@/core/services/firebase/firebase";
 import { useEffect, useState } from "react";
-import { auth } from "@/core/services/firebase";
 import { User } from "../types";
 
 export function useUser(): [User, boolean] {

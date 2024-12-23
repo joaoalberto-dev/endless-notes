@@ -1,21 +1,26 @@
-import { collection, orderBy, query } from "firebase/firestore";
-import { db } from "@/core/services/firebase";
-import { getDocs } from "firebase/firestore";
+import { auth, db } from "@/core/services/firebase/firebase";
+import { getCollection } from "@/core/services/firebase/queries";
 import { Note } from "../types";
 
 async function getNotes(): Promise<Note[]> {
-  const notesCollection = collection(db, "notes");
-  const q = query(notesCollection, orderBy("createdAt", "asc"))
-  const notes = await getDocs(q);
+  if (!auth.currentUser) throw new Error("User not authenticated");
 
-  return notes.docs.map((doc) => {
-    return {
-      id: doc.id,
-      note: doc.data().note,
-      createdAt: doc.data().createdAt,
-      updatedAt: doc.data().updatedAt,
-    };
-  });
+  try {
+    const notes = await getCollection(
+      db,
+      `notes/${auth.currentUser.uid}/notes`
+    );
+
+    return notes.docs.map(
+      (doc) =>
+        ({
+          id: doc.id,
+          ...doc.data(),
+        } as Note)
+    );
+  } catch {
+    return [];
+  }
 }
 
 export { getNotes };

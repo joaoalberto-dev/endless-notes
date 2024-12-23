@@ -1,8 +1,11 @@
 type Note = {
   id: string;
-  note: string;
-  createdAt: Date;
-  updatedAt: Date;
+  content: string;
+
+  // Date
+  createdAt: number;
+  updatedAt: number;
+  deletedAt: number;
 };
 
 export type { Note };

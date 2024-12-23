@@ -6,6 +6,7 @@ import { Editor } from "./features/editor/ui/editor";
 import { NotesList } from "./features/notes/ui/notes-list";
 import LoaderPage from "./core/components/loader/loader-page";
 import { PageLayout } from "./core/components/layout/page-layout";
+import { Timeline } from "./features/timeline/ui/timeline";
 
 function App() {
   const [user, isPending] = useUser();
@@ -20,6 +21,7 @@ function App() {
         <Editor />
       </div>
       <NotesList />
+      <Timeline />
     </PageLayout>
   );
 }
