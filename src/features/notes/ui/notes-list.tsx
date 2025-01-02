@@ -1,20 +1,9 @@
-import { TrashIcon } from "lucide-react";
 import { motion } from "motion/react";
-import { deleteNote } from "../data/delete-note";
 import { useNotes } from "../hooks/use-notes";
-
-import deleteSound from "@/core/sound/delete.m4a";
-import { useSound } from "use-sound";
+import { DeleteNote } from "./delete-note";
 
 function NotesList() {
-  const { notes, isLoading, refetchNotes } = useNotes();
-  const [playDelete] = useSound(deleteSound);
-
-  async function handleDeleteNote(id: string) {
-    await deleteNote(id);
-    refetchNotes();
-    playDelete();
-  }
+  const { notes, isLoading } = useNotes();
 
   if (isLoading || !notes?.length) return null;
 
@@ -30,12 +19,7 @@ function NotesList() {
             key={note.id}
             dangerouslySetInnerHTML={{ __html: note.content }}
           />
-          <div className="hidden group-hover:block absolute right-4 top-1/2 -translate-y-1/2">
-            <TrashIcon
-              className="size-4"
-              onClick={() => handleDeleteNote(note.id)}
-            />
-          </div>
+          <DeleteNote note={note} />
         </div>
       ))}
     </div>
