@@ -47,7 +47,7 @@ function Timeline() {
   if (!notes.notes) return null;
 
   return (
-    <div className="fixed opacity-50 hover:opacity-100 transition-opacity duration-300 z-10 left-0 m-4 w-[44px] h-full flex flex-col justify-center overflow-x-visible rounded-lg">
+    <div className="fixed opacity-50 hover:opacity-100 transition-opacity duration-300 z-10 left-0 m-4 w-[44px] h-full flex flex-col justify-center overflow-x-visible rounded-[10px]">
       <div className="fixed left-0 top-0">
         <AnimatePresence>
           {currentNote && (
@@ -88,7 +88,7 @@ function Timeline() {
         >
           <motion.div
             variants={indicatorVariants}
-            className="h-[2px] rounded-full bg-gray-800 pointer-events-none"
+            className="h-[2px] rounded-[10px] bg-gray-800 pointer-events-none"
           />
         </motion.div>
       ))}

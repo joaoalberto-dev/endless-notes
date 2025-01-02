@@ -1,10 +1,10 @@
 import { Button } from "@/core/components/button/button";
 import { cn } from "@/core/utils/cn";
 import { useCurrentEditor } from "@tiptap/react";
-import { useMemo } from "react";
 import { RedoIcon, UndoIcon } from "lucide-react";
+import { useMemo } from "react";
 
-const buttonClasses = cn("text-xs rounded-full");
+const buttonClasses = cn("text-xs rounded-[10px]");
 
 function EditorMenu() {
   const { editor } = useCurrentEditor();

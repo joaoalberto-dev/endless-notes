@@ -4,8 +4,8 @@ import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import { EditorProvider } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { EditorMenu } from "./editor-menu";
 import { EditorActions } from "./editor-actions";
+import { EditorMenu } from "./editor-menu";
 
 const extensions = [
   Color.configure(),
@@ -17,7 +17,7 @@ const extensions = [
 
 function Editor() {
   return (
-    <div className="w-full border-b sm:border relative border-gray-300 h-screen sm:h-auto overflow-hidden sm:rounded-[24px] sm:max-w-[480px]">
+    <div className="w-full border-b sm:border relative border-gray-300 h-screen sm:h-auto overflow-hidden sm:rounded-[10px] sm:max-w-[480px]">
       <EditorProvider
         editorContainerProps={{
           className:

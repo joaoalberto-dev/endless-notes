@@ -2,7 +2,7 @@ import { cn } from "@/core/utils/cn";
 import { ButtonHTMLAttributes } from "react";
 
 const baseClass =
-  "rounded-md cursor-pointer px-2 py-1 border border-gray-300 data-[active=true]:bg-gray-100";
+  "rounded-[10px] cursor-pointer px-2 py-1 border border-gray-300 data-[active=true]:bg-gray-100";
 
 const disabledClass = "cursor-not-allowed";
 

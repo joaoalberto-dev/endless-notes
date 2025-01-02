@@ -31,7 +31,7 @@ function EditorActions() {
     <div className="absolute bottom-2 right-2">
       <Button
         onClick={handleSave}
-        className="bg-white rounded-full flex items-center justify-center w-10 h-10 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-white rounded-[10px] flex items-center justify-center w-10 h-10 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={disabled}
       >
         {isPending ? (
